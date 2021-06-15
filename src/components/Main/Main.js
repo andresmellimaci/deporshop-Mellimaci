@@ -1,13 +1,25 @@
 import React from "react";
-import { ItemListContainer } from "../Items/ItemListContainer.js";
+import { ItemDetailContainer } from "../Items/Detail/ItemDetailContainer.js";
+import { ItemListContainer } from "../Items/List/ItemListContainer.js";
 import { NavBar } from "../NavBar/NavBar.js";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function Main() {
   return (
-    <div>
+    <BrowserRouter>
       <NavBar />
-      <ItemListContainer greeting="Bienvenido a DeporShop" />
-    </div>
+      <Switch>
+        <Route exact path="/">
+          <ItemListContainer greeting="Bienvenido a DeporShop" />
+        </Route>
+        <Route exact path="/category/:id">
+          <ItemDetailContainer />
+        </Route>
+        <Route exact path="/item/:id">
+          <ItemDetailContainer />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

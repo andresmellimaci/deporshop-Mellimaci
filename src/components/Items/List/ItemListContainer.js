@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { ItemList } from "./ItemList";
 import { Spinner } from "react-bootstrap";
-import { Item } from "./Item";
-import "./ItemList.css";
 
-export const ItemList = () => {
+export const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -48,27 +47,19 @@ export const ItemList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container-fluid">
       {isLoading && (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Cargando lista de productos...</span>
-        </Spinner>
+        <div className="d-flex justify-content-center">
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Cargando lista de productos...</span>
+          </Spinner>
+        </div>
       )}
 
       {!isLoading && (
-        <div className="products">
-          {products.map((product, i) => {
-            return (
-              <Item
-                key={i}
-                id={product.id}
-                title={product.title}
-                description={product.description}
-                price={product.price}
-                pictureUrl={product.pictureUrl}
-              />
-            );
-          })}
+        <div>
+          <p>{greeting}</p>
+          <ItemList products={products} isLoading={isLoading} />
         </div>
       )}
     </div>
