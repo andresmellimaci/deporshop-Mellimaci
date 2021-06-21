@@ -1,33 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { Loading } from "../../Utils/Loading";
 import { ItemDetail } from "./ItemDetail";
+import { productList } from "../../Utils/ProductList";
 
 export const ItemDetailContainer = () => {
   const [item, setItem] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const itemObject = {
-    id: 1,
-    title: "Remera Deportiva",
-    description: "Remera deportiva Topper color gris",
-    category: 1,
-    price: 1500,
-    pictureUrl:
-      "https://sporting.vteximg.com.br/arquivos/ids/187085-1000-1000/DFDssas.jpg?v=636967265397900000",
-  };
+  const { id } = useParams();
 
   useEffect(() => {
     const getItems = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(itemObject);
-      }, 2000);
+      // setTimeout(() => {
+        // resolve(itemObject);
+        resolve(productList.find((product) => product.id == id));
+      // }, 2000);
     });
 
     getItems.then((res) => {
       setIsLoading(false);
       setItem(res);
     });
-  }, []);
+  }, [id]);
 
   const onAdd = (cantidadSeleccionada) => {
     console.log(`Cantidad seleccionada: ${cantidadSeleccionada}`);
@@ -36,11 +30,7 @@ export const ItemDetailContainer = () => {
   return (
     <div className="container-fluid">
       {isLoading && (
-        <div class="d-flex justify-content-center">
-          <Spinner animation="border" role="status">
-            <span className="sr-only">Cargando lista de productos...</span>
-          </Spinner>
-        </div>
+        <Loading />
       )}
 
       {!isLoading && (

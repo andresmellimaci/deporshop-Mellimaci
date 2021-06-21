@@ -4,7 +4,7 @@ import "./ItemDetail.css";
 
 export const ItemDetail = ({ item, onAdd }) => {
   return (
-    <div className="col-lg-8 border p-3 main-section bg-white">
+    <div className="col-lg-8 border p-3 main-section bg-white animate__animated animate__fadeIn">
       <div className="row m-0">
         <div className="col-lg-4 left-side-product-box pb-3">
           <img

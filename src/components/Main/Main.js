@@ -13,7 +13,7 @@ function Main() {
           <ItemListContainer greeting="Bienvenido a DeporShop" />
         </Route>
         <Route exact path="/category/:id">
-          <ItemDetailContainer />
+          <ItemListContainer />
         </Route>
         <Route exact path="/item/:id">
           <ItemDetailContainer />

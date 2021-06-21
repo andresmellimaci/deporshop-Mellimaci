@@ -2,11 +2,11 @@ import React from "react";
 import { Item } from "./Item";
 import "./ItemList.css";
 
-export const ItemList = ({products, isLoading}) => {
+export const ItemList = ({products}) => {
 
   return (
     <div>
-      {!isLoading && (
+      {
         <div className="products">
           {products.map((product, i) => {
             return (
@@ -21,7 +21,7 @@ export const ItemList = ({products, isLoading}) => {
             );
           })}
         </div>
-      )}
+      }
     </div>
   );
 };
