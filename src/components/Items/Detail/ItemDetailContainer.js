@@ -23,10 +23,6 @@ export const ItemDetailContainer = () => {
     });
   }, [id]);
 
-  const onAdd = (cantidadSeleccionada) => {
-    console.log(`Cantidad seleccionada: ${cantidadSeleccionada}`);
-  };
-
   return (
     <div className="container-fluid">
       {isLoading && (
@@ -35,7 +31,7 @@ export const ItemDetailContainer = () => {
 
       {!isLoading && (
         <div>
-          <ItemDetail item={item} onAdd={onAdd} />
+          <ItemDetail item={item} />
         </div>
       )}
     </div>

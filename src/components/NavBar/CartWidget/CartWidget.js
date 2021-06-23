@@ -8,7 +8,7 @@ export const CartWidget = () => {
   return (
     <div className="cart-icon">
       <span>0</span>
-      <NavLink to="/cart">
+      <NavLink exact to="/cart">
         <Cart color="white" size={30} />
       </NavLink>
     </div>
