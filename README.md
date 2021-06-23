@@ -72,4 +72,4 @@ Componente que contiene un Spinner, el cual se visualiza en los momentos de carg
 
 _A continuación, se muestra un breve ejemplo de navegación dentro de la aplicación. Se navega a través de cada categoría y se ingresa a los detalles de los productos_
 
-![Navegacion DeporShop](https://media.giphy.com/media/WPQcYztbLxrPH5schY/source.gif)
+![Navegacion DeporShop](https://github.com/andresmellimaci/deporshop-Mellimaci/blob/main/src/assests/images/DeporShop.gif)
