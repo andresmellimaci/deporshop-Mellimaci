@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Nav, Navbar, Form } from "react-bootstrap";
 import { CartWidget } from "./CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
 import { productList } from "./../Utils/ProductList";
+import CartContext from "../../context/CartContext";
 
 export const NavBar = () => {
+
+  const {cart} = useContext(CartContext);
+  
+  let cartQuantity = cart.reduce(function(prev, cur) {
+    return prev + cur.quantity;
+  }, 0);
+
   const categories = [
     ...new Set(productList.map((product) => product.category)),
   ];
@@ -32,7 +40,7 @@ export const NavBar = () => {
             })}
           </Nav>
           <Form inline>
-            <CartWidget />
+            <CartWidget cartLength={cartQuantity}/>
           </Form>
         </Navbar.Collapse>
       </Navbar>
