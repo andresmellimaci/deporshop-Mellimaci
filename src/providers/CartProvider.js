@@ -21,7 +21,10 @@ export const CartProvider = ({ defaultValue = [], children }) => {
 
   const removeItem = (id) => {
     if(isInCart(id)){
-        
+        setCart(
+          cart.filter(item => 
+            item.item.id != id)
+        )
     }
   };
 

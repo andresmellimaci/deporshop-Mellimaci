@@ -4,13 +4,11 @@ import { NavLink } from "react-router-dom";
 import "./CartWidget.css";
 // import Cart from '../../../assests/icons/cart.svg';
 
-export const CartWidget = ({cartLength}) => {
+export const CartWidget = ({ cartLength }) => {
   return (
-    <div className="cart-icon">
+    <NavLink className="cart-icon" exact to="/cart">
       <span>{cartLength}</span>
-      <NavLink exact to="/cart">
-        <Cart color="white" size={30} />
-      </NavLink>
-    </div>
+      <Cart color="white" size={30} />
+    </NavLink>
   );
 };
