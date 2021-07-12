@@ -17,7 +17,7 @@ export const ItemDetail = ({ item }) => {
     <div className="col-lg-8 border p-3 main-section bg-white animate__animated animate__fadeIn">
       <div className="row m-0">
         <div className="col-lg-4 left-side-product-box pb-3">
-          <img src={item.pictureUrl} className="border p-3" alt="" />
+          <img src={item.imageId} className="border p-3" alt="" />
           <span className="sub-img">
             <img
               src="https://sporting.vteximg.com.br/arquivos/ids/187086-1500-1500/SADSDDDA.jpg?v=636967267027130000"

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getFirestore } from "../../../factory/Firebase";
 import { Loading } from "../../Utils/Loading";
 import { ItemDetail } from "./ItemDetail";
-import { productList } from "../../Utils/ProductList";
 
 export const ItemDetailContainer = () => {
   const [item, setItem] = useState([]);
@@ -10,24 +10,26 @@ export const ItemDetailContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const getItems = new Promise((resolve, reject) => {
-      // setTimeout(() => {
-        // resolve(itemObject);
-        resolve(productList.find((product) => product.id == id));
-      // }, 2000);
-    });
+    const db = getFirestore();
+    const itemCollection = db.collection("items");
+    const item = itemCollection.doc(id);
 
-    getItems.then((res) => {
-      setIsLoading(false);
-      setItem(res);
-    });
+    item
+      .get()
+      .then((doc) => {
+        setItem({ id: doc.id, ...doc.data() });
+      })
+      .catch((error) => {
+        console.log("Error al obtener un item", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [id]);
 
   return (
     <div className="container-fluid">
-      {isLoading && (
-        <Loading />
-      )}
+      {isLoading && <Loading />}
 
       {!isLoading && (
         <div>
