@@ -25,5 +25,14 @@ export const productList = [
       category: 'pantalones',
       pictureUrl:
         "https://sporting.vteximg.com.br/arquivos/ids/263918-1000-1000/UAI0125-581-1.jpg?v=637527908664130000",
+    },
+    {
+      id: 4,
+      title: "Buzo deportivo",
+      description: "Short deportivo Puma color azul",
+      price: 950,
+      category: 'buzos',
+      pictureUrl:
+        "https://sporting.vteximg.com.br/arquivos/ids/263918-1000-1000/UAI0125-581-1.jpg?v=637527908664130000",
     }
   ];
