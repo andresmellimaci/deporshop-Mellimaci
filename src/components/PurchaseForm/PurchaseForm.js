@@ -24,7 +24,7 @@ export const PurchaseForm = ({ finalizarCompra, formData, setFormData }) => {
         />
       </Form.Group>
       <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label>Email</Form.Label>
         <Form.Control
           type="email"
           placeholder="Ingrese Email"
