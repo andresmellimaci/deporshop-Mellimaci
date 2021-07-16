@@ -12,10 +12,10 @@ npm start
 
 ## Dependencias extra utilizadas 🛠️
 
-* [Animate.css](https://animate.style/) - Biblioteca de animaciones, se utilizó para dar un efecto fadeIn cuando se carga la lista de productos.
-* [Bootstrap](https://getbootstrap.com/) - Biblioteca utilizada para el diseño de estilos de la aplicacion.
-* [react-router-dom](https://reactrouter.com/web/guides/quick-start) - Componente utilizado para la navegacion en la aplicacion.
-
+* [Animate.css v4.1.1](https://animate.style/) - Biblioteca de animaciones, se utilizó para dar un efecto fadeIn cuando se carga la lista de productos.
+* [Bootstrap v4.6.0](https://getbootstrap.com/) - Biblioteca utilizada para el diseño de estilos de la aplicacion.
+* [react-router-dom v5.2.0](https://reactrouter.com/web/guides/quick-start) - Componente utilizado para la navegacion en la aplicacion.
+* [Firebase v8.7.0](https://firebase.google.com/?hl=es) - Componente utilizado para el almacenamiento de la información (firestore).
 
 ## Versionado 📌
 
@@ -62,8 +62,11 @@ Componente que se encarga de visualizar en detalle la información de un product
 * **ItemCount.js**
 Componente que se encarga de visualizar el contador para seleccionar la cantidad del producto que se quiere agregar al carrito. Es un componente hijo de ItemDetail. Recibe por props: el stock del producto, la cantidad inicial (por defecto es 1), y una función que se ejecuta cuando se hace click en el botón "Agregar al carrito".
 
-* **Utils/ProductList.js**
-Archivo que contiene un array con la lista de productos y la información detallada de cada uno. Se utiliza para renderizar dichos productos en los componentes necesarios.
+* **Cart.js**
+Componente que se encarga de visualizar el contenido del carrito. Desde este componente se pueden quitar productos, vaciar el carrito y ademas contiene al componente PurchaseForm. Haciendo click en el boton "Finalizar Compra", se genera la orden en firebase con la información del comprador, los productos y el total de la compra.
+
+* **PurchaseForm.js**
+Componente que contiene un formulario con la información que debe completar el comprador (Nombre, Email, Telefono).
 
 * **Utils/Loading.js**
 Componente que contiene un Spinner, el cual se visualiza en los momentos de carga de la aplicación. Por ejemplo cuando se buscan los productos para mostrar en pantalla o cuando se ingresa al detalle de alguno.
