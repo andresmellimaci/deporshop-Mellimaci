@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-// import { Card } from "react-bootstrap";
-// import RemeraImage from "../../../assests/images/remera-deportiva-gris.jpg";
 
 export const ItemCount = ({ stock, initial, onAdd }) => {
   const [cantidad, setCantidad] = useState(initial);

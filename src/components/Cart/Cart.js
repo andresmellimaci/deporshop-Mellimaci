@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import CartContext from "../../context/CartContext";
 import Table from "react-bootstrap/Table";
 import { NavLink } from "react-router-dom";
-import { Container, Form } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { getFirestore } from "../../factory/Firebase";
 import firebase from "firebase/app";
 import { Loading } from "../Utils/Loading";
+import { PurchaseForm } from "../PurchaseForm/PurchaseForm";
 
 export const Cart = () => {
   const { cart, clear, removeItem } = useContext(CartContext);
@@ -97,53 +98,7 @@ export const Cart = () => {
               </div>
             </div>
             <hr></hr>
-            {/* <Container fluid> */}
-            <Form>
-              <Form.Group>
-                <Form.Label>Nombre</Form.Label>
-                <Form.Control
-                  type="name"
-                  placeholder="Ingrese Nombre"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                />
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label>Telefono</Form.Label>
-                <Form.Control
-                  type="phone"
-                  placeholder="Ingrese Telefono"
-                  value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Ingrese Email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                />
-              </Form.Group>
-              <Form.Group>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => finalizarCompra()}
-                >
-                  Finalizar compra
-                </button>
-              </Form.Group>
-            </Form>
-            {/* </Container> */}
+            <PurchaseForm finalizarCompra={finalizarCompra} formData={formData} setFormData={setFormData} />
           </div>
         ) : (
           <div>

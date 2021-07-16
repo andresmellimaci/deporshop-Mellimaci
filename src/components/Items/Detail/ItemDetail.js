@@ -52,7 +52,7 @@ export const ItemDetail = ({ item }) => {
               </div>
               {cantidadProducto <= 0 ? (
                 <div className="col-lg-12">
-                  <ItemCount stock={20} initial={1} onAdd={onAdd} />
+                  <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
                 </div>
               ) : (
                 <div className="col-lg-12" style={{ textAlign: "center" }}>

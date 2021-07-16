@@ -1,21 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Nav, Navbar, Form } from "react-bootstrap";
 import { CartWidget } from "./CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
-import { productList } from "./../Utils/ProductList";
 import CartContext from "../../context/CartContext";
+import { getFirestore } from "../../factory/Firebase";
 
 export const NavBar = () => {
+  const { cart } = useContext(CartContext);
+  const [categories, setCategories] = useState([]);
 
-  const {cart} = useContext(CartContext);
-  
-  let cartQuantity = cart.reduce(function(prev, cur) {
+  let cartQuantity = cart.reduce(function (prev, cur) {
     return prev + cur.quantity;
   }, 0);
 
-  const categories = [
-    ...new Set(productList.map((product) => product.category)),
-  ];
+  useEffect(() => {
+    const db = getFirestore();
+    const itemCollection = db.collection("items");
+
+    itemCollection
+      .get()
+      .then((querySnapshot) => {
+        setCategories([...new Set(querySnapshot.docs.map((doc) => doc.data().categoryId))]);
+      })
+      .catch((error) => {
+        console.log("Error obteniendo lista de categorias", error);
+      });
+  }, []);
 
   return (
     <>
@@ -40,7 +50,7 @@ export const NavBar = () => {
             })}
           </Nav>
           <Form inline>
-            <CartWidget cartLength={cartQuantity}/>
+            <CartWidget cartLength={cartQuantity} />
           </Form>
         </Navbar.Collapse>
       </Navbar>
